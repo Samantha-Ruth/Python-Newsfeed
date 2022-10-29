@@ -1,5 +1,6 @@
 from app.routes import home
 from app.routes import home, dashboard
+from flask import Flask
 
 def create_app(test_config=None):
   # set up app config
