@@ -17,6 +17,7 @@ SQLAlchemy was used to create models, sync models with the Database, add model v
 * I used Jinja2 to create custom filter functions in template files (date format, URL format, plural words) and implemented them in the template files to make for a better user experience. 
 
 
+
 ![Front_Page](https://github.com/Samantha-Ruth/Python-Newsfeed/assets/64170123/ff98f9a3-bfcb-405f-9fb6-c0e95296f92b)
 
 
@@ -29,24 +30,39 @@ SQLAlchemy was used to create models, sync models with the Database, add model v
 
 ## Installation
 
-If the user already has python installed on their device, they can download this project, create a virtual environment (. venv/bin/activate). Install flask and then start the flask server (export FLASK_APD = app, python3 =m flask run).
-"pip install flask wsqlalchemy pymysql python-dotenv bcrypt cryptography" to download the required dependencies (respectively).  In order to access the mysql2 shell,  they would need to create a .env file with the following, replacing <username> and <user password> with the users own username and password: 
-  
+If the user already has python installed on their device, they can download this project and create a virtual environment (. venv/bin/activate). Install flask and then start the flask server ().
+" pip install flask sqlalchemy pymysql python-dotenv bcrypt cryptography " to download the required dependencies. In order to access the mysql2 shell,  they would need to create a .env file with the following: 
+
 DB_URL=mysql+pymysql://root:<password>@localhost/python_news_db
-
-Where <password> is your personal mysql password. 
-
-
-To ensure the user is connected to the correct database, navigate to the root folder of the project, and then open the mysql2 shell and enter "source db/schema.sql".  Then enter "USE python_news_db" to use the database file. Exit the mysql2 shell by entering "exit" into the command line.
+  
+Where <password> is the user's personal mysql password. 
+  
+To ensure the user is connected to the correct database, navigate to the root folder of the project, and then open the mysql2 shell and enter " source db/schema.sql ".  Then enter " USE python_news_db " to use the database file. Exit the mysql2 shell by entering " exit " into the command line.
 
 Next, seed the database with data by entering "python seeds.py" into the command line.  The database and required tables are now created, selected, and contain data.  
-
-Finally, connect the server by entering "python3 -m flask run" into the command line.
+  
+Next, set a variable for flask by entering either of the following into the command line: 
+ * For MAC: " export FLASK_APD = app "
+ * For Windows: " $env:FLASK_APP = "app" "
+  
+Then connect to the Flask server by entering " python3 =m flask run " into the command line. 
 
 
 ## Usage
 
-When the user gets to the homepage, they will be presented with a list of existing blog posts and comments.  At the top of the webpage, the user has an option to login.  Once they click on the login link, the user has the option to log in or create a new login account. Once the user logs in, they are taken to a dashboard of the posts they have created.  They are given the option to add a new post, change the title of the post, or delete the post.  They also have the option to comment on other posts and upvote posts they like. 
+When the user gets to the homepage, they will be presented with a list of existing blog posts and comments.  At the top of the webpage, the user has an option to login.  Once they click on the login link, the user has the option to log in or create a new account. 
+  
+  ![Log_in](https://github.com/Samantha-Ruth/Python-Newsfeed/assets/64170123/8cbc1227-9628-45fd-bf7b-a7ff6b7c4914)
+
+  Once the user logs in or creates an account, they are taken to a dashboard of the posts they have created. 
+  
+  ![Dashboard](https://github.com/Samantha-Ruth/Python-Newsfeed/assets/64170123/756bc372-e4bb-48d1-89cf-94651742876f)
+
+  They are given the option to add a new post, change the title of the post, or delete the post.  
+  
+  ![create_post](https://github.com/Samantha-Ruth/Python-Newsfeed/assets/64170123/9a802397-9f8b-4a91-bef1-d6957d4596a6)
+
+  They also have the option to comment on other posts and upvote posts they like. 
 
 
 ## Links
