@@ -1,30 +1,24 @@
-# python-newsfeed
-A Tech Blog were individuals can log in, post interesting articles, and commentand voter on others. Built using Python, MySQL, SQLAlchemy, and Jinja2.
+# Python-Newsfeed
+A Tech Blog were individuals can log in and post interesting articles. Users can also comment and vote on other posts. Built using Python, MySQL, SQLAlchemy, and Jinja2.
 
 ## Description
 
-This project helped me learn more about the Python language.  It was written in Python and built using Flask, SQL, SQLAlchemy, PyMySQL, and Jinja2.  
+This project helped me learn more about the Python language. Using given frontend templates, I set up Python webserver (Flask) to render the frontend.
 
-Using given frontend templates, I set up Python webserver (Flask) to render the frontend.
+* To create the backend, the database was setup using pymysql and the database connection to the frontend was setup in Flask. 
+SQLAlchemy was used to create models, sync models with the Database, add model validations, and create API routes (using the Blueprint object). 
 
-To create the backend, the database was setup using pymysql. The database connection to the frontend was setup in Flask. 
-SQLAlchemy was used to create models (using Base to help map models to mySQL tables), 
-sync models with the Database, add model validations, and create API routes (also using the Blueprint object). 
+* During each call to the server, I used the Flask 'g object' to store data during the server request to the database (context) and then ensured the database connection was closed when the request ended and the context was destroyed.
 
-During each call to the server, I used the Flask g object to store data during the server request to the database (context) and then closed the 
-database connection when the request ended and the context was destroyed.
+* User logins and persistent sessions were created in the Flask app using API routes and using the global object 'request', and I set up password encryption using bycrpt and cryptography with some salt. I added error handling using 'try .... except' statements. 
 
-User logins and persistent sessions were created in flask app using API routes and using the global object 'request', and I set up password encryption using bycrpt and cryptography, with some salt. 
-I added error handling using try .... except statements. 
+* The app was set up to conditionally show pages of the website based on whether the user is logged in or not, and decorators were used to protect the API routes from users who aren't logged in. 
 
-The app was set up to conditionally show or hide pages of the website based on whether the
-user is logged in or not, and decorators were used to protect the API routes from users who aren't logged in. 
-
-I used Jinja2 to create custom filter functions in template files (date format, URL format, plural words) and iplement them in the template files to 
-make the user experience better on the frontend. 
+* I used Jinja2 to create custom filter functions in template files (date format, URL format, plural words) and implemented them in the template files to make for a better user experience. 
 
 
-![Tech Blog Post List](https://user-images.githubusercontent.com/64170123/179441374-338acce6-434c-4fc1-a0ae-7303b383f719.jpg)
+![Front_Page](https://github.com/Samantha-Ruth/Python-Newsfeed/assets/64170123/ff98f9a3-bfcb-405f-9fb6-c0e95296f92b)
+
 
 ## Table of Contents
 
