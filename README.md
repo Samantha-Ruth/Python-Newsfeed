@@ -3,7 +3,9 @@ A Tech Blog were individuals can log in and post interesting articles. Users can
 
 ## Description
 
-This project helped me learn more about the Python language. Using given frontend templates, I set up Python webserver (Flask) to render the frontend.
+This project helped me learn more about the Python language. 
+
+* Using given frontend templates, I set up Python webserver (Flask) to render the frontend.
 
 * To create the backend, the database was setup using pymysql and the database connection to the frontend was setup in Flask. 
 SQLAlchemy was used to create models, sync models with the Database, add model validations, and create API routes (using the Blueprint object). 
