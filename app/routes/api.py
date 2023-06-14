@@ -83,3 +83,86 @@ def comment():
         return jsonify(message = 'Comment failed'), 500
   
   return jsonify(id = newComment.id)
+
+@bp.route('/posts/upvote', methods=['PUT'])
+def upvote():
+   data = request.get_json()
+   db = get_db()
+
+   try: 
+      # Create a new vote with incoming id and session id
+      newVote = Vote(
+         post_id = data['post_id'],
+         user_id = session.get('user_id')
+      )
+      # save in database
+      db.add(newVote)
+      db.commit()
+   except: 
+      # insert failed, send error message to CLI
+      print(sys.exe_info()[0])
+      # insert failed, so rollback and send error message
+      db.rollback()
+      return jsonify(message = 'Upvote Failed'), 500
+
+   return '', 204
+
+@bp.route('/posts', methods=['POST'])
+def create():
+   data = request.get_json()
+   db = get_db()
+
+   try: 
+      # Create a new vote with incoming id and session id
+      newPost = Post(
+         title = data['title'],
+         post_url = data['post_url'],
+         user_id = session.get('user_id')
+      )
+      # save in database
+      db.add(newPost)
+      db.commit()
+   except: 
+      # insert failed, send error message to CLI
+      print(sys.exe_info()[0])
+      # insert failed, so rollback and send error message
+      db.rollback()
+      return jsonify(message = 'Post Failed'), 500
+
+   return jsonify(id = newPost.id)
+
+@bp.route('/posts/<id>', methods=['PUT'])
+def update(id):
+   data = request.get_json()
+   db = get_db()
+
+   try: 
+      # retrieve post and update title property
+      post = db.query(Post).filter(Post.id == id).one()
+      post.title = data['title'],
+      db.commit()
+   except: 
+      # insert failed, send error message to CLI
+      print(sys.exe_info()[0])
+      # insert failed, so rollback and send error message
+      db.rollback()
+      return jsonify(message = 'Post Not found'), 500
+
+   return '', 204
+
+@bp.route('/posts/<id>', methods=['DELETE'])
+def delete(id):
+   db = get_db()
+
+   try: 
+      # delete post from database
+      db.delete(db.query(Post).filter(Post.id == id).one())
+      db.commit()
+   except: 
+      # insert failed, send error message to CLI
+      print(sys.exe_info()[0])
+      # insert failed, so rollback and send error message
+      db.rollback()
+      return jsonify(message = 'Post Not found'), 404
+
+   return '', 204
