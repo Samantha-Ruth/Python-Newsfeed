@@ -70,7 +70,8 @@ When the user gets to the homepage, they will be presented with a list of existi
 ## Links
 
 
-The link to the project is here:
+The link to the project is here: https://just-tech-news-pyth-00cd05af400c.herokuapp.com
+I used Heroku to deploy, but working on moving to a different location. If it's not up and running, I returned to ecodyno instead of the basic plan. 
 
 The url of the Git repository is here: https://github.com/Samantha-Ruth/python-newsfeed
 
